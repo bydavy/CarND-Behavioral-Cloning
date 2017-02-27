@@ -1,15 +1,23 @@
 #Behavioral Cloning Assignment
 
-## How to execute code
-
-* First train the neural network `train.py`
-* Start the simulator in autonomous mode and run the driving code `drive.py`
-
 ## Introduction
 
 The behavioral cloning assignment consists of creating a neural network that takes as an input images taken from a car's dashboard, pointing at the road, and outputs the corresponding steering angle to stay on the road.
 
 Udacity provides a simulator that can be used to record data and also drive a car in autonomous mode in a virtual environment. The simulation takes place in a track, similar to a racing track.
+
+## Download simulator
+
+* [Linux](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58ae46bb_linux-sim/linux-sim.zip)
+* [MacOS](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58ae4594_mac-sim.app/mac-sim.app.zip)
+* [Windows](https://d17h27t6h515a5.cloudfront.net/topher/2017/February/58ae4419_windows-sim/windows-sim.zip)
+
+[Source code](https://github.com/udacity/self-driving-car-sim)
+
+## How to execute code
+
+* First train the neural network `train.py`
+* Start the simulator in autonomous mode and run the driving code `drive.py`
 
 ##Architecture
 
