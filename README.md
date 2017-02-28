@@ -19,6 +19,9 @@ Udacity provides a simulator that can be used to record data and also drive a ca
 * First train the neural network `train.py`
 * Start the simulator in autonomous mode and run the driving code `drive.py`
 
+## Result video
+[Youtube](https://www.youtube.com/watch?v=So5oz6gRuYQ)
+
 ##Architecture
 
 The neural network architecture used for this project is a derivative of the Nvidia architecture presented in the "End to End Learning for Self-Driving Cars" paper. It differs in minor ways, the changes made to the original design will be details in the next paragraphs. The neural network created by Nvidia has a total of 9 layers, 5 convolutions followed by 4 fully connected layers.
