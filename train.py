@@ -82,36 +82,24 @@ def get_model():
         :return: Keras model
         :rtype: keras.models.model
     """
-    # This model is the one developed by Nvidia. It works well for real world images but it overkill for the simulator.
-    # I should spend sometime to simplify it.
     model = Sequential()
-    input_shape = (INPUT_IMAGE_HEIGHT, INPUT_IMAGE_WIDTH, 3)
+    input_shape = (input_image_height, input_image_width, 3)
     # Normalization layer
     model.add(Lambda(lambda x: x / 255 - .5,\
             input_shape=input_shape,\
             output_shape=input_shape))
-    # Layer 1: 5x5 convolution with 24 output filters on a 160x320 image
+    # Layer 1: 5x5 convolution with 24 output filters
     model.add(Convolution2D(24, 5, 5, activation = 'relu', subsample=(2, 2)))
-    # Layer 2: 5x5 convolution with 36 output filters
-    model.add(Convolution2D(36, 5, 5, activation = 'relu', subsample=(2, 2)))
-    # Layer 3: 5x5 convolution with 48 output filters
-    model.add(Convolution2D(48, 5, 5, activation = 'relu', subsample=(2, 2)))
-    # Layer 4: 3x3 convolution with 64 output filters
-    model.add(Convolution2D(64, 3, 3, activation = 'relu'))
-    # Layer 5: 3x3 convolution with 64 output filters
-    model.add(Convolution2D(64, 3, 3, activation = 'relu'))
-    # Layer 6: fully connected with 1164 neurons
+    # Layer 2: 3x3 convolution with 36 output filters
+    model.add(Convolution2D(36, 3, 3, activation = 'relu', subsample=(2, 2)))
+    # Layer 3: fully connected
     model.add(Flatten())
-    model.add(Dense(1164, activation = 'relu'))
-    model.add(Dropout(keep_prob))
-    # Layer 7: fully connected with 100 neurons
-    model.add(Dense(100, activation = 'relu'))
-    model.add(Dropout(keep_prob))
-    # Layer 8: fully connected with 50 neurons
+    # Layer 4: fully connected with 50 neurons
     model.add(Dense(50, activation = 'relu'))
     model.add(Dropout(keep_prob))
-    # Layer 9: fully connected with 10 neurons
+    # Layer 5: fully connected with 10 neurons
     model.add(Dense(10, activation = 'relu'))
+    model.add(Dropout(keep_prob))
     # Output
     model.add(Dense(1))
 
@@ -173,17 +161,17 @@ def __augment_image_trio(center_image, left_image, right_image, steering,\
     """
     __augment_image_single(center_image, steering, out_images, out_steerings)
 
-    # The idea was to use left and right image and infere the steering angle.
+    # The idea was to use left and right image and infer the steering angle.
     # It had a tendency to deteriorate the final result instead of improving it.
     # Therefore, I decided to ignore left and right images.
     # offset = 0.05 if steering == 0 else steering/3.0
     #
     # left_steering = np.clip(steering + offset, 0, 1)
-    # __augmente_image_single(left_image, left_steering,\
+    # __augment_image_single(left_image, left_steering,\
     #     out_images, out_steerings)
     #
     # right_steering = np.clip(steering - offset, 0, 1)
-    # __augmente_image_single(right_image, right_steering,\
+    # __augment_image_single(right_image, right_steering,\
     #     out_images, out_steerings)
 
 

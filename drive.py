@@ -1,16 +1,12 @@
 import argparse
 import base64
-import json
 
 import numpy as np
 import socketio
-import eventlet
 import eventlet.wsgi
-import time
 from common import *
 from PIL import Image
-from PIL import ImageOps
-from flask import Flask, render_template
+from flask import Flask
 from io import BytesIO
 
 from keras.models import model_from_json
