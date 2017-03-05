@@ -14,8 +14,8 @@ from keras.preprocessing.image import ImageDataGenerator
 from sklearn.model_selection import train_test_split
 from PIL import Image
 
-batch_size = 512
-nb_epoch = 10
+batch_size = 1024
+nb_epoch = 8
 keep_prob = 0.5
 
 
@@ -88,10 +88,10 @@ def get_model():
     model.add(Lambda(lambda x: x / 255 - .5,\
             input_shape=input_shape,\
             output_shape=input_shape))
-    # Layer 1: 5x5 convolution with 24 output filters
-    model.add(Convolution2D(24, 5, 5, activation = 'relu', subsample=(2, 2)))
-    # Layer 2: 3x3 convolution with 36 output filters
-    model.add(Convolution2D(36, 3, 3, activation = 'relu', subsample=(2, 2)))
+    # Layer 1: 5x5 convolution with 12 output filters
+    model.add(Convolution2D(12, 5, 5, activation = 'relu', subsample=(2, 2)))
+    # Layer 2: 3x3 convolution with 18 output filters
+    model.add(Convolution2D(18, 3, 3, activation = 'relu', subsample=(2, 2)))
     # Layer 3: fully connected
     model.add(Flatten())
     # Layer 4: fully connected with 50 neurons
