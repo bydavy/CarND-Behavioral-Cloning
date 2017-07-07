@@ -1,4 +1,4 @@
-#Behavioral Cloning Assignment
+# Behavioral Cloning Assignment
 
 ## Introduction
 
@@ -20,9 +20,9 @@ Udacity provides a simulator that can be used to record data and also drive a ca
 * Start the simulator in autonomous mode and run the driving code `drive.py data/outputs/model.json`
 
 ## Result video
-[Youtube](https://www.youtube.com/watch?v=So5oz6gRuYQ)
+[![Demo running on simulator](https://img.youtube.com/vi/So5oz6gRuYQ/0.jpg)](https://youtu.be/So5oz6gRuYQ "Demo")
 
-##Architecture
+## Architecture
 
 The neural network architecture used for this project is has 5 layers and can be trained on cpu.
 
@@ -55,13 +55,13 @@ Dropouts have been added to the two first fully connected layers. It forces the 
 
 Real-time data augmentation, by always presenting different images to the network, allows the network to generalize features quicker and makes the network insensible to minor image change. Images are randomly shifted, verticaly and horizontaly. The shift is a slight shift of a tiny amount, 5%, such that the steering angle can be kept unchanged.
 
-##Collecting data
+## Collecting data
 Udacity's simulator has been used to record images and corresponding steering angles. Two laps of normal driving and the two laps of going back to center have been recorder (see pictures). The last step is the most important part of the training. It teaches the neural network how to go recover when the car is sidetracked.
 
 ![Dashboard image](images/training.png)
 
 ![Dashboard image](images/training-recover.png)
-##Training
+## Training
 
 The data set is split in training and validation set. 20% of the original data set is reserved for the validation. Each image from the training set is duplicated by adding an horizontal mirror image and an opposite steering angle. Doing so, prevents the neural network being bias towards left or right turns, as our data set has an uneven set of turns.
 
